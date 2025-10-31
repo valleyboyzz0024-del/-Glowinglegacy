@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Video, Gift, Calendar, Heart, ArrowRight } from 'lucide-react';
+import { Video, Gift, Calendar, Heart, ArrowRight, Users, Shield, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { LegacyReadinessCalculator } from '@/components/legacy-readiness-calculator';
 import { EnhancedHero } from '@/components/ui/enhanced-hero';
@@ -21,6 +21,7 @@ import {
   ScaleButton,
   RippleEffect,
 } from '@/components/ui/hover-effects';
+import { Tabs } from '@/components/ui/tabs';
 
 export default function HomePage() {
   return (
@@ -129,6 +130,179 @@ export default function HomePage() {
               </GlassCard>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Features Showcase with Tabs */}
+      <section className="py-20 relative overflow-hidden">
+        {/* Background effect */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent pointer-events-none" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-heading text-gold mb-4">
+              Everything You Need
+            </h2>
+            <p className="text-xl text-white/70 max-w-2xl mx-auto">
+              Explore our comprehensive features designed to preserve your legacy
+            </p>
+          </motion.div>
+
+          <Tabs
+            tabs={[
+              {
+                id: 'video',
+                label: 'Video Messages',
+                icon: <Video className="h-5 w-5" />,
+                content: (
+                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                      <h3 className="text-3xl font-heading text-gold mb-4">
+                        Record Your Story
+                      </h3>
+                      <p className="text-lg text-white/80 mb-6 leading-relaxed">
+                        Create heartfelt video messages with our intuitive recorder.
+                        No technical skills required - just press record and speak from the heart.
+                      </p>
+                      <ul className="space-y-3">
+                        {[
+                          '1080p HD quality recording',
+                          'Easy-to-use interface',
+                          'Unlimited retakes',
+                          'Secure cloud storage',
+                          'Download anytime',
+                        ].map((feature, i) => (
+                          <li key={i} className="flex items-center gap-3 text-white/90">
+                            <div className="h-2 w-2 rounded-full bg-gold" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="relative h-[400px] rounded-2xl overflow-hidden bg-gradient-to-br from-gold/20 to-black/40 backdrop-blur-xl border border-gold/30 flex items-center justify-center">
+                      <Video className="h-24 w-24 text-gold/30" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: 'gifts',
+                label: 'Gift Delivery',
+                icon: <Gift className="h-5 w-5" />,
+                content: (
+                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                      <h3 className="text-3xl font-heading text-gold mb-4">
+                        Thoughtful Gifts
+                      </h3>
+                      <p className="text-lg text-white/80 mb-6 leading-relaxed">
+                        Pair your messages with meaningful gifts from our curated collection.
+                        Each gift is carefully selected to create lasting memories.
+                      </p>
+                      <ul className="space-y-3">
+                        {[
+                          'Curated gift collection',
+                          'Personal delivery scheduling',
+                          'Gift wrapping included',
+                          'Tracking notifications',
+                          'Special occasion themes',
+                        ].map((feature, i) => (
+                          <li key={i} className="flex items-center gap-3 text-white/90">
+                            <div className="h-2 w-2 rounded-full bg-gold" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="relative h-[400px] rounded-2xl overflow-hidden bg-gradient-to-br from-gold/20 to-black/40 backdrop-blur-xl border border-gold/30 flex items-center justify-center">
+                      <Gift className="h-24 w-24 text-gold/30" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: 'family',
+                label: 'Family Sharing',
+                icon: <Users className="h-5 w-5" />,
+                content: (
+                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                      <h3 className="text-3xl font-heading text-gold mb-4">
+                        Share With Family
+                      </h3>
+                      <p className="text-lg text-white/80 mb-6 leading-relaxed">
+                        Collaborate with family members to build a complete legacy together.
+                        Share messages, plan deliveries, and preserve memories as a family.
+                      </p>
+                      <ul className="space-y-3">
+                        {[
+                          'Multi-user accounts',
+                          'Family tree integration',
+                          'Collaborative planning',
+                          'Privacy controls',
+                          'Shared photo albums',
+                        ].map((feature, i) => (
+                          <li key={i} className="flex items-center gap-3 text-white/90">
+                            <div className="h-2 w-2 rounded-full bg-gold" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="relative h-[400px] rounded-2xl overflow-hidden bg-gradient-to-br from-gold/20 to-black/40 backdrop-blur-xl border border-gold/30 flex items-center justify-center">
+                      <Users className="h-24 w-24 text-gold/30" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    </div>
+                  </div>
+                ),
+              },
+              {
+                id: 'security',
+                label: 'Security & Privacy',
+                icon: <Shield className="h-5 w-5" />,
+                content: (
+                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                      <h3 className="text-3xl font-heading text-gold mb-4">
+                        Bank-Level Security
+                      </h3>
+                      <p className="text-lg text-white/80 mb-6 leading-relaxed">
+                        Your memories are precious. We protect them with enterprise-grade security
+                        and encryption, ensuring they remain safe for generations.
+                      </p>
+                      <ul className="space-y-3">
+                        {[
+                          '256-bit AES encryption',
+                          'Multi-factor authentication',
+                          'Regular security audits',
+                          'GDPR compliant',
+                          'Backup redundancy',
+                        ].map((feature, i) => (
+                          <li key={i} className="flex items-center gap-3 text-white/90">
+                            <div className="h-2 w-2 rounded-full bg-gold" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="relative h-[400px] rounded-2xl overflow-hidden bg-gradient-to-br from-gold/20 to-black/40 backdrop-blur-xl border border-gold/30 flex items-center justify-center">
+                      <Shield className="h-24 w-24 text-gold/30" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    </div>
+                  </div>
+                ),
+              },
+            ]}
+            variant="pills"
+          />
         </div>
       </section>
 
