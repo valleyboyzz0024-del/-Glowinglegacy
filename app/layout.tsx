@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Glowing Legacy - Leave More Than Memories",
   description: "Record heartfelt video messages and send meaningful gifts to loved ones—delivered exactly when they need them most",
   keywords: ["legacy", "video messages", "memorial", "gifts", "family"],
-  authors: [{ name: "Glowing Legacy" }],
+  authors: [{ name: "Glowing Legacy" }],`n  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
   openGraph: {
     title: "Glowing Legacy - Leave More Than Memories",
     description: "Record heartfelt video messages and send meaningful gifts to loved ones",
