@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '@/lib/context/cart-context';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,6 +8,9 @@ import { Button } from '@/components/ui/button';
 import { formatPrice } from '@/lib/types/product';
 import { ShoppingBag, CreditCard, Truck, Lock } from 'lucide-react';
 import Image from 'next/image';
+import { Elements } from '@stripe/react-stripe-js';
+import { getStripe } from '@/lib/stripe';
+import { StripePaymentForm } from '@/components/checkout/stripe-payment-form';
 
 interface ShippingAddress {
   firstName: string;
@@ -26,6 +29,8 @@ export default function CheckoutPage() {
   const { cart, itemCount, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState<'shipping' | 'payment'>('shipping');
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
   
   const [shippingAddress, setShippingAddress] = useState<ShippingAddress>({
     firstName: '',
@@ -62,10 +67,35 @@ export default function CheckoutPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleShippingSubmit = (e: React.FormEvent) => {
+  const handleShippingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateShipping()) {
-      setStep('payment');
+      setLoading(true);
+      try {
+        // Create payment intent
+        const response = await fetch('/api/stripe/create-payment-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: cart.total,
+            cartItems: cart.items,
+            shippingAddress,
+          }),
+        });
+
+        const data = await response.json();
+        
+        if (data.clientSecret) {
+          setClientSecret(data.clientSecret);
+          setStep('payment');
+        } else {
+          setPaymentError('Failed to initialize payment');
+        }
+      } catch (error) {
+        setPaymentError('Failed to initialize payment');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -274,36 +304,35 @@ export default function CheckoutPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
-                    <div className="p-4 bg-gold/10 rounded-lg border border-gold/30">
-                      <p className="text-sm text-gold font-semibold mb-2">
-                        🔒 Stripe Payment Integration Coming Soon
-                      </p>
-                      <p className="text-xs text-text-secondary">
-                        This is where Stripe payment form will appear. For now, this is a demo of the checkout flow.
-                      </p>
+                  {paymentError && (
+                    <div className="mb-4 p-4 bg-destructive/10 border border-destructive rounded-lg">
+                      <p className="text-sm text-destructive">{paymentError}</p>
                     </div>
-
-                    <div className="flex gap-4">
-                      <Button
-                        variant="outline"
-                        onClick={() => setStep('shipping')}
-                        className="flex-1"
-                      >
-                        Back to Shipping
-                      </Button>
-                      <Button
-                        onClick={() => {
-                          alert('Payment integration coming soon! This completes the checkout demo.');
+                  )}
+                  
+                  {clientSecret ? (
+                    <Elements stripe={getStripe()} options={{ clientSecret }}>
+                      <StripePaymentForm
+                        onSuccess={() => {
                           clearCart();
-                          router.push('/dashboard');
+                          router.push('/order-confirmation');
                         }}
-                        className="flex-1"
-                      >
-                        Place Order (Demo)
-                      </Button>
+                        onError={(error) => setPaymentError(error)}
+                      />
+                    </Elements>
+                  ) : (
+                    <div className="flex items-center justify-center py-8">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
                     </div>
-                  </div>
+                  )}
+
+                  <Button
+                    variant="outline"
+                    onClick={() => setStep('shipping')}
+                    className="w-full mt-4"
+                  >
+                    Back to Shipping
+                  </Button>
                 </CardContent>
               </Card>
             )}
