@@ -8,12 +8,13 @@ import { Button } from '@/components/ui/button';
 import { formatPrice } from '@/lib/types/product';
 import { ShoppingBag, CreditCard, Truck, Lock } from 'lucide-react';
 import Image from 'next/image';
-import { Elements } from '@stripe/react-stripe-js';
-import { getStripe } from '@/lib/stripe';
-import { StripePaymentForm } from '@/components/checkout/stripe-payment-form';
+import dynamic from 'next/dynamic';
 
-// Force dynamic rendering to avoid SSR issues with Stripe
-export const dynamic = 'force-dynamic';
+// Dynamically import Stripe Elements with no SSR
+const StripeElementsWrapper = dynamic(
+  () => import('@/components/checkout/stripe-elements-wrapper').then(mod => mod.StripeElementsWrapper),
+  { ssr: false }
+);
 
 interface ShippingAddress {
   firstName: string;
@@ -314,15 +315,14 @@ export default function CheckoutPage() {
                   )}
                   
                   {clientSecret ? (
-                    <Elements stripe={getStripe()} options={{ clientSecret }}>
-                      <StripePaymentForm
-                        onSuccess={() => {
-                          clearCart();
-                          router.push('/order-confirmation');
-                        }}
-                        onError={(error) => setPaymentError(error)}
-                      />
-                    </Elements>
+                    <StripeElementsWrapper
+                      clientSecret={clientSecret}
+                      onSuccess={() => {
+                        clearCart();
+                        router.push('/order-confirmation');
+                      }}
+                      onError={(error) => setPaymentError(error)}
+                    />
                   ) : (
                     <div className="flex items-center justify-center py-8">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
