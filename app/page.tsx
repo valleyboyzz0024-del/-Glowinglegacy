@@ -14,6 +14,13 @@ import {
   GlassCardDescription,
   GlassCardFooter,
 } from '@/components/ui/glass-card';
+import {
+  MagneticButton,
+  AnimatedLink,
+  FloatingIcon,
+  ScaleButton,
+  RippleEffect,
+} from '@/components/ui/hover-effects';
 
 export default function HomePage() {
   return (
@@ -29,27 +36,33 @@ export default function HomePage() {
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            <Link href="#how-it-works" className="text-text-secondary hover:text-gold transition-colors">
+            <AnimatedLink href="#how-it-works" className="text-text-secondary hover:text-gold transition-colors text-base font-medium">
               How It Works
-            </Link>
-            <Link href="/pricing" className="text-text-secondary hover:text-gold transition-colors">
+            </AnimatedLink>
+            <AnimatedLink href="/pricing" className="text-text-secondary hover:text-gold transition-colors text-base font-medium">
               Pricing
-            </Link>
-            <Link href="/shop" className="text-text-secondary hover:text-gold transition-colors">
+            </AnimatedLink>
+            <AnimatedLink href="/shop" className="text-text-secondary hover:text-gold transition-colors text-base font-medium">
               Shop
-            </Link>
-            <Link href="/about" className="text-text-secondary hover:text-gold transition-colors">
+            </AnimatedLink>
+            <AnimatedLink href="/about" className="text-text-secondary hover:text-gold transition-colors text-base font-medium">
               About
-            </Link>
+            </AnimatedLink>
           </div>
 
           <div className="flex items-center gap-4">
-            <Link href="/login">
-              <Button variant="ghost">Log In</Button>
-            </Link>
-            <Link href="/signup">
-              <Button>Get Started</Button>
-            </Link>
+            <MagneticButton>
+              <Link href="/login">
+                <Button variant="ghost" className="text-base">Log In</Button>
+              </Link>
+            </MagneticButton>
+            <MagneticButton strength={0.2}>
+              <Link href="/signup">
+                <RippleEffect>
+                  <Button className="text-base shadow-lg">Get Started</Button>
+                </RippleEffect>
+              </Link>
+            </MagneticButton>
           </div>
         </div>
       </nav>
