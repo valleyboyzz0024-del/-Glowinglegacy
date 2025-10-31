@@ -1,13 +1,16 @@
 'use client';
 
 import { useCallback, useRef, useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Circle as RecordCircle, Square, CheckCircle, AlertCircle } from 'lucide-react';
 import { getSupabase } from '@/lib/supabase';
 
-const Webcam = dynamic(() => import('react-webcam').then(m => m.default as any), { ssr: false }) as any;
+// Force dynamic rendering - page needs Supabase at runtime
+export const dynamic = 'force-dynamic';
+
+const Webcam = dynamicImport(() => import('react-webcam').then(m => m.default as any), { ssr: false }) as any;
 
 export default function RecordPage() {
   const supabase = getSupabase();
