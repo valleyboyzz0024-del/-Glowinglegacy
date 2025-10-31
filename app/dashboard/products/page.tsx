@@ -59,19 +59,19 @@ export default function ProductsAdminPage() {
             <h3 className="text-white font-semibold mb-2">To Add a Product:</h3>
             <ol className="list-decimal list-inside space-y-1 text-text-secondary text-sm">
               <li>Go to Supabase Dashboard → Table Editor → products table</li>
-              <li>Click "Insert" → "Insert row"</li>
+              <li>Click &quot;Insert&quot; → &quot;Insert row&quot;</li>
               <li>Fill in the fields:</li>
               <ul className="list-disc list-inside ml-6 mt-1 space-y-1">
-                <li><strong>name</strong>: Product name (e.g., "Memory Box")</li>
-                <li><strong>slug</strong>: URL-friendly name (e.g., "memory-box")</li>
+                <li><strong>name</strong>: Product name (e.g., &quot;Memory Box&quot;)</li>
+                <li><strong>slug</strong>: URL-friendly name (e.g., &quot;memory-box&quot;)</li>
                 <li><strong>description</strong>: Product description</li>
                 <li><strong>category</strong>: keepsake, memorial, jewelry, package, or digital</li>
                 <li><strong>base_price</strong>: Price as decimal (e.g., 149.99)</li>
-                <li><strong>images</strong>: JSON array ["https://..."]</li>
+                <li><strong>images</strong>: JSON array [&quot;https://...&quot;]</li>
                 <li><strong>stock_quantity</strong>: Number available (e.g., 50)</li>
                 <li><strong>tags</strong>: Array of tags (featured, bestseller, new_arrival)</li>
               </ul>
-              <li>Click "Save"</li>
+              <li>Click &quot;Save&quot;</li>
             </ol>
           </div>
 
@@ -89,7 +89,7 @@ export default function ProductsAdminPage() {
             <ol className="list-decimal list-inside space-y-1 text-text-secondary text-sm">
               <li>Go to Supabase Dashboard → Table Editor → products table</li>
               <li>Click the row checkbox</li>
-              <li>Click "Delete" button</li>
+              <li>Click &quot;Delete&quot; button</li>
               <li>Confirm deletion</li>
             </ol>
           </div>
