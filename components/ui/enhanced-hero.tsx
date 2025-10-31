@@ -43,13 +43,13 @@ export function EnhancedHero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Dynamic Background Layer */}
-      <div className="absolute inset-0 bg-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      {/* Dynamic Background Layer - Keep Leonardo AI but very subtle on white */}
+      <div className="absolute inset-0">
         {backgroundImage && !isLoading && (
           <motion.div
             initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 0.3, scale: 1 }}
+            animate={{ opacity: 0.08, scale: 1 }}
             transition={{ duration: 2 }}
             className="absolute inset-0"
           >
@@ -63,11 +63,11 @@ export function EnhancedHero() {
           </motion.div>
         )}
         
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
+        {/* Gradient Overlay - Very subtle on white */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/95" />
         
-        {/* Radial Gradient */}
-        <div className="absolute inset-0 bg-gradient-radial from-gold/5 via-transparent to-transparent" />
+        {/* Radial Gradient - Gold glow effect */}
+        <div className="absolute inset-0 bg-gradient-radial from-gold/15 via-transparent to-transparent" />
       </div>
 
       {/* Particle Effect Layer */}
