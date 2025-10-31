@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 0 0% 100%; /* White */
+    --card: 0 0% 10%; /* #1A1A1A */
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 43 74% 52%; /* Gold #D4AF37 */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 63%; /* #A0A0A0 */
+    --accent: 25 52% 31%; /* Warm accent #8B4513 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 43 74% 52%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  /* Senior-friendly defaults */
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Ensure high contrast */
+  ::selection {
+    @apply bg-gold text-background;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold/50 rounded-lg;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold;
+  }
+}
+
+@layer components {
+  /* Gold glow effect for buttons and cards */
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .glow-gold:hover {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+  }
+
+  /* Senior-friendly button */
+  .btn-senior {
+    @apply px-6 py-4 text-lg font-semibold rounded-lg;
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* Card with gold border */
+  .card-gold {
+    @apply bg-background-card border border-gold/20 rounded-lg;
+    transition: all 0.3s ease;
+  }
+
+  .card-gold:hover {
+    @apply border-gold/50 shadow-glow;
+    transform: translateY(-2px);
+  }
+}
+
+/* Custom animations */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    to right,
+    rgba(212, 175, 55, 0) 0%,
+    rgba(212, 175, 55, 0.2) 50%,
+    rgba(212, 175, 55, 0) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-background;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  border: 3px solid rgba(212, 175, 55, 0.1);
+  border-radius: 50%;
+  border-top-color: #D4AF37;
+  animation: spin 1s linear infinite;
+}
