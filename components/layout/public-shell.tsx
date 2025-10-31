@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { CartButton } from '@/components/cart/cart-button';
 
 const nav = [
   { label: 'How It Works', href: '/how-it-works' },
@@ -40,6 +41,7 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
             ))}
           </div>
           <div className="flex items-center gap-4">
+            <CartButton />
             <Link href="/login" className="text-text-secondary hover:text-gold transition-colors">Log In</Link>
             <Link href="/signup" className="inline-flex items-center rounded-md border border-gold/30 bg-gold/15 px-4 py-2 text-sm text-gold shadow-glow hover:bg-gold/25">Get Started</Link>
           </div>

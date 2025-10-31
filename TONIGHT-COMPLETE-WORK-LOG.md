@@ -1,3 +1,13 @@
+
+Vercel page : www.glowinglegacy.com
++2
+glowinglegacy-git-main-rhs-projects-b9cb3fb0.vercel.app
+glowinglegacy-2kjao97fa-rhs-projects-b9cb3fb0.vercel.app
+
+
+
+
+
 # Tonight's Complete Work Log - October 31, 2025
 ## All-Night Development Sprint: Enterprise UI + Video Recording + Email Templates
 
