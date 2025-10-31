@@ -103,7 +103,7 @@ export default function OnboardingPage() {
     <div className="space-y-6">
       <div>
         <label className="block text-sm font-medium mb-3">
-          What's your primary goal with Glowing Legacy?
+          What&apos;s your primary goal with Glowing Legacy?
         </label>
         <div className="space-y-2">
           {[
@@ -230,7 +230,7 @@ export default function OnboardingPage() {
             </div>
           </div>
           <h1 className="text-3xl font-heading text-gold mb-2">Welcome to Glowing Legacy</h1>
-          <p className="text-text-secondary">Let's personalize your experience</p>
+          <p className="text-text-secondary">Let&apos;s personalize your experience</p>
         </div>
 
         {/* Progress Bar */}
