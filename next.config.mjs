@@ -16,10 +16,23 @@ const nextConfig = {
       },
     ],
   },
+  // Disable static optimization for pages that need runtime data
   experimental: {
-    serverActions: {
-      bodySizeLimit: '50mb', // For video uploads
-    },
+    optimizePackageImports: ['lucide-react'],
+  },
+  // Force dynamic rendering for specific routes
+  async headers() {
+    return [
+      {
+        source: '/checkout',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, must-revalidate',
+          },
+        ],
+      },
+    ];
   },
 };
 

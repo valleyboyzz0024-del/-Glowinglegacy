@@ -8,12 +8,23 @@ import { Button } from '@/components/ui/button';
 import { formatPrice } from '@/lib/types/product';
 import { ShoppingBag, CreditCard, Truck, Lock } from 'lucide-react';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
+
+// Force this entire route to be dynamic - prevents static generation
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 // Dynamically import Stripe Elements with no SSR
-const StripeElementsWrapper = dynamic(
+const StripeElementsWrapper = dynamicImport(
   () => import('@/components/checkout/stripe-elements-wrapper').then(mod => mod.StripeElementsWrapper),
-  { ssr: false }
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex items-center justify-center py-8">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
+      </div>
+    )
+  }
 );
 
 interface ShippingAddress {
