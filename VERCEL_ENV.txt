@@ -1,0 +1,23 @@
+# Glowing Legacy — Vercel Environment Variables (Preview)
+# Copy each line into Vercel → Project → Settings → Environment Variables
+# Scope: Preview (and then duplicate to Production later)
+
+NEXT_PUBLIC_SUPABASE_URL=https://vyavdcyidnqedtnvgxlk.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5YXZkY3lpZG5xZWR0bnZneGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE4ODI3MzgsImV4cCI6MjA3NzQ1ODczOH0.-1HbzLFuNqXgFKRSJuMN8LHww6resdiCOL5EBtYYlao
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5YXZkY3lpZG5xZWR0bnZneGxrIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MTg4MjczOCwiZXhwIjoyMDc3NDU4NzM4fQ.tvm-Ens-cCdjjix9pkclxrVPH8FYoMBF2v1hHNv6Exc
+
+# Stripe (public key OK for client; add secret + webhook later when wiring checkout)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51SOAbYImPVAr870lXGSMDx4qGjjsN8JBMeUnAgbX9rrVRTjcYgTwqpw5ThvFEWagVgUTD4lfiKCOfsTDxAmYZg0e00SN5hAExE
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+
+# App URL used in metadataBase and links; set this to the Preview URL after first deploy
+NEXT_PUBLIC_APP_URL=
+
+# Optional (only if/when we enable these)
+ANTHROPIC_API_KEY=
+SENTRY_DSN=
+
+# Notes
+# - Keep the service role key server-only (never expose in client code).
+# - After first Preview deploy, copy its URL into NEXT_PUBLIC_APP_URL and redeploy.
