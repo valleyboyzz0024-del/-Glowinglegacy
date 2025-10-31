@@ -4,7 +4,7 @@ import { useCallback, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Loader2, Circle, Square } from 'lucide-react';
+import { Loader2, Circle as RecordCircle, Square } from 'lucide-react';
 
 const Webcam = dynamic(() => import('react-webcam').then(m => m.default as any), { ssr: false }) as any;
 
@@ -80,7 +80,7 @@ export default function RecordPage() {
             <div className="flex items-center gap-3">
               {!recording ? (
                 <Button size="lg" onClick={handleStart} className="animate-pulse-glow">
-                  <Circle className="mr-2 h-4 w-4" /> Start Recording
+                  <RecordCircle className="mr-2 h-4 w-4" /> Start Recording
                 </Button>
               ) : (
                 <Button size="lg" variant="outline" onClick={handleStop}>
