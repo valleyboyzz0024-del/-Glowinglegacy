@@ -12,6 +12,9 @@ import { Elements } from '@stripe/react-stripe-js';
 import { getStripe } from '@/lib/stripe';
 import { StripePaymentForm } from '@/components/checkout/stripe-payment-form';
 
+// Force dynamic rendering to avoid SSR issues with Stripe
+export const dynamic = 'force-dynamic';
+
 interface ShippingAddress {
   firstName: string;
   lastName: string;

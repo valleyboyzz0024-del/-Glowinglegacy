@@ -1,26 +1,27 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Package, Mail, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-export default function OrderConfirmationPage() {
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
+function OrderConfirmationContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [orderNumber, setOrderNumber] = useState<string>('');
 
   useEffect(() => {
-    // Generate order number (in production, this would come from the payment confirmation)
     const generateOrderNumber = () => {
       const date = new Date();
       const year = date.getFullYear();
       const random = Math.floor(100000 + Math.random() * 900000);
       return `GL-${year}-${random}`;
     };
-
     setOrderNumber(generateOrderNumber());
   }, []);
 
@@ -150,5 +151,17 @@ export default function OrderConfirmationPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function OrderConfirmationPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold"></div>
+      </div>
+    }>
+      <OrderConfirmationContent />
+    </Suspense>
   );
 }
