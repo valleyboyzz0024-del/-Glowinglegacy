@@ -22,6 +22,12 @@ import {
   RippleEffect,
 } from '@/components/ui/hover-effects';
 import { Tabs } from '@/components/ui/tabs';
+import {
+  Parallax,
+  ParallaxSection,
+  RevealOnScroll,
+  ScaleOnScroll,
+} from '@/components/ui/parallax';
 
 export default function HomePage() {
   return (
@@ -74,14 +80,14 @@ export default function HomePage() {
       {/* How It Works Section */}
       <section id="how-it-works" className="py-20 bg-background-card/50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <RevealOnScroll direction="up" className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-heading text-gold mb-4">
               How It Works
             </h2>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto">
               Creating your legacy is simple. Just four steps to ensure your love reaches them.
             </p>
-          </div>
+          </RevealOnScroll>
 
           <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {[
@@ -134,25 +140,22 @@ export default function HomePage() {
       </section>
 
       {/* Features Showcase with Tabs */}
-      <section className="py-20 relative overflow-hidden">
-        {/* Background effect */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent pointer-events-none" />
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-heading text-gold mb-4">
-              Everything You Need
-            </h2>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto">
-              Explore our comprehensive features designed to preserve your legacy
-            </p>
-          </motion.div>
+      <ParallaxSection speed={0.15}>
+        <section className="py-20 relative overflow-hidden">
+          {/* Background effect with parallax */}
+          <Parallax speed={-0.2} className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent" />
+          </Parallax>
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <ScaleOnScroll maxScale={1.05} className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-heading text-gold mb-4">
+                Everything You Need
+              </h2>
+              <p className="text-xl text-white/70 max-w-2xl mx-auto">
+                Explore our comprehensive features designed to preserve your legacy
+              </p>
+            </ScaleOnScroll>
 
           <Tabs
             tabs={[
@@ -303,20 +306,30 @@ export default function HomePage() {
             ]}
             variant="pills"
           />
-        </div>
-      </section>
+          </div>
+        </section>
+      </ParallaxSection>
 
       {/* Pricing Preview Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-heading text-gold mb-4">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-              Pay only for what you use. No monthly subscriptions required.
-            </p>
-          </div>
+      <ParallaxSection speed={0.25}>
+        <section className="py-20 relative">
+          {/* Floating background elements */}
+          <Parallax speed={0.3} className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-40 left-20 w-72 h-72 bg-gold/10 rounded-full blur-3xl" />
+          </Parallax>
+          <Parallax speed={-0.25} className="absolute inset-0 pointer-events-none">
+            <div className="absolute bottom-40 right-20 w-72 h-72 bg-gold/10 rounded-full blur-3xl" />
+          </Parallax>
+
+          <div className="container mx-auto px-4 relative z-10">
+            <RevealOnScroll direction="up" className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-heading text-gold mb-4">
+                Simple, Transparent Pricing
+              </h2>
+              <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+                Pay only for what you use. No monthly subscriptions required.
+              </p>
+            </RevealOnScroll>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
@@ -412,45 +425,66 @@ export default function HomePage() {
             <Link href="/pricing" className="text-gold hover:underline text-lg">
               View all pricing options
             </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ParallaxSection>
 
       {/* Legacy Planner Section */}
-      <section id="legacy-planner" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto mb-12 max-w-3xl text-center">
-            <h2 className="text-4xl md:text-5xl font-heading text-gold mb-4">
-              Build A Legacy Plan In Minutes
-            </h2>
-            <p className="text-xl text-text-secondary">
-              Use our readiness calculator to make sure your stories, gifts, and scheduled moments are ready for the people you love.
+      <ParallaxSection speed={0.2}>
+        <section id="legacy-planner" className="py-20 bg-background relative overflow-hidden">
+          <Parallax speed={-0.15} className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-gold/5 via-transparent to-transparent" />
+          </Parallax>
+
+          <div className="container mx-auto px-4 relative z-10">
+            <RevealOnScroll direction="up" className="mx-auto mb-12 max-w-3xl text-center">
+              <h2 className="text-4xl md:text-5xl font-heading text-gold mb-4">
+                Build A Legacy Plan In Minutes
+              </h2>
+              <p className="text-xl text-text-secondary">
+                Use our readiness calculator to make sure your stories, gifts, and scheduled moments are ready for the people you love.
+              </p>
+            </RevealOnScroll>
+            <ScaleOnScroll maxScale={1.02}>
+              <LegacyReadinessCalculator />
+            </ScaleOnScroll>
+            <p className="mt-6 text-center text-sm text-text-tertiary">
+              Want tailored guidance? Your concierge will help fine tune every milestone after you sign up.
             </p>
           </div>
-          <LegacyReadinessCalculator />
-          <p className="mt-6 text-center text-sm text-text-tertiary">
-            Want tailored guidance? Your concierge will help fine tune every milestone after you sign up.
-          </p>
-        </div>
-      </section>
+        </section>
+      </ParallaxSection>
 
       {/* CTA Section */}
-      <section className="py-20 bg-background-card/50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-heading text-gold mb-6">
-            Start Creating Your Legacy Today
-          </h2>
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto mb-12">
-            Join thousands of families who are ensuring their love and wisdom live on for generations.
-          </p>
-          <Link href="/signup">
-            <Button size="lg" className="text-lg px-8">
-              Create Free Account
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <ParallaxSection speed={0.1}>
+        <section className="py-20 bg-background-card/50 relative overflow-hidden">
+          <Parallax speed={0.2} className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-t from-gold/10 to-transparent" />
+          </Parallax>
+
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <ScaleOnScroll maxScale={1.1}>
+              <h2 className="text-4xl md:text-5xl font-heading text-gold mb-6">
+                Start Creating Your Legacy Today
+              </h2>
+              <p className="text-xl text-text-secondary max-w-2xl mx-auto mb-12">
+                Join thousands of families who are ensuring their love and wisdom live on for generations.
+              </p>
+              <MagneticButton strength={0.3}>
+                <Link href="/signup">
+                  <RippleEffect>
+                    <Button size="lg" className="text-lg px-8 shadow-glow-lg">
+                      Create Free Account
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </RippleEffect>
+                </Link>
+              </MagneticButton>
+            </ScaleOnScroll>
+          </div>
+        </section>
+      </ParallaxSection>
 
       {/* Footer */}
       <footer className="border-t border-gold/20 py-12 bg-background">
