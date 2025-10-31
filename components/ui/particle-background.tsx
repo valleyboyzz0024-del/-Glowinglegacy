@@ -39,7 +39,7 @@ export function ParticleBackground() {
       size: Math.random() * 2 + 0.5,
       speedX: (Math.random() - 0.5) * 0.5,
       speedY: (Math.random() - 0.5) * 0.5,
-      opacity: Math.random() * 0.5 + 0.2,
+      opacity: Math.random() * 0.1 + 0.05, // Faint gold for white background
     }));
 
     // Animation loop
@@ -75,7 +75,7 @@ export function ParticleBackground() {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(212, 175, 55, ${0.1 * (1 - distance / 150)})`;
+            ctx.strokeStyle = `rgba(212, 175, 55, ${0.03 * (1 - distance / 150)})`; // Very faint gold lines
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -99,7 +99,7 @@ export function ParticleBackground() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 pointer-events-none"
-      style={{ opacity: 0.4 }}
+      style={{ opacity: 0.6 }}
     />
   );
 }
