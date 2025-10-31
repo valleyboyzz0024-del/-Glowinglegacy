@@ -41,8 +41,8 @@ export function Tabs({
               variant === 'pills' && 'rounded-full',
               variant === 'underline' && 'rounded-none border-b-2',
               activeTab === tab.id
-                ? 'text-white'
-                : 'text-white/60 hover:text-white/80'
+                ? 'text-foreground'
+                : 'text-foreground/60 hover:text-foreground/80'
             )}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -118,8 +118,8 @@ export function VerticalTabs({
             className={cn(
               'relative px-6 py-4 text-left text-base font-medium transition-all duration-300 rounded-lg',
               activeTab === tab.id
-                ? 'text-white'
-                : 'text-white/60 hover:text-white/80'
+                ? 'text-foreground'
+                : 'text-foreground/60 hover:text-foreground/80'
             )}
             whileHover={{ x: 4 }}
             whileTap={{ scale: 0.98 }}
@@ -208,7 +208,7 @@ export function AccordionTabs({
               className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gold/5 transition-colors"
               whileHover={{ x: 4 }}
             >
-              <span className="flex items-center gap-3 text-lg font-medium text-white">
+              <span className="flex items-center gap-3 text-lg font-medium text-foreground">
                 {tab.icon && <span className="text-gold text-xl">{tab.icon}</span>}
                 {tab.label}
               </span>

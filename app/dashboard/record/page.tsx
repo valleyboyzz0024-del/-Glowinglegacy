@@ -153,7 +153,7 @@ export default function RecordPage() {
                   type="text"
                   value={videoTitle}
                   onChange={(e) => setVideoTitle(e.target.value)}
-                  className="w-full px-4 py-2 bg-background border border-gold/20 rounded-lg focus:outline-none focus:border-gold transition-colors text-white"
+                  className="w-full px-4 py-2 bg-background border border-gold/20 rounded-lg focus:outline-none focus:border-gold transition-colors text-foreground"
                   placeholder="Enter a title for your video"
                 />
               </div>

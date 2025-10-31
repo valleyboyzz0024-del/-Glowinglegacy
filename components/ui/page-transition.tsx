@@ -274,7 +274,7 @@ export function RouteChangeIndicator() {
             repeat: Infinity,
           }}
         />
-        <span className="text-sm text-white/90">Loading...</span>
+        <span className="text-sm text-foreground/90">Loading...</span>
       </div>
     </motion.div>
   );

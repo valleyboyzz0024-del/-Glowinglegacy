@@ -56,7 +56,7 @@ export default function ProductsAdminPage() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <h3 className="text-white font-semibold mb-2">To Add a Product:</h3>
+            <h3 className="text-foreground font-semibold mb-2">To Add a Product:</h3>
             <ol className="list-decimal list-inside space-y-1 text-text-secondary text-sm">
               <li>Go to Supabase Dashboard → Table Editor → products table</li>
               <li>Click &quot;Insert&quot; → &quot;Insert row&quot;</li>
@@ -76,7 +76,7 @@ export default function ProductsAdminPage() {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-2">To Edit a Product:</h3>
+            <h3 className="text-foreground font-semibold mb-2">To Edit a Product:</h3>
             <ol className="list-decimal list-inside space-y-1 text-text-secondary text-sm">
               <li>Go to Supabase Dashboard → Table Editor → products table</li>
               <li>Click on any field to edit directly</li>
@@ -85,7 +85,7 @@ export default function ProductsAdminPage() {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-2">To Delete a Product:</h3>
+            <h3 className="text-foreground font-semibold mb-2">To Delete a Product:</h3>
             <ol className="list-decimal list-inside space-y-1 text-text-secondary text-sm">
               <li>Go to Supabase Dashboard → Table Editor → products table</li>
               <li>Click the row checkbox</li>
@@ -143,19 +143,19 @@ export default function ProductsAdminPage() {
                         </span>
                       )}
                       {product.tags.includes('bestseller') && (
-                        <span className="bg-emerald-500 text-white px-2 py-0.5 rounded text-xs font-bold">
+                        <span className="bg-emerald-500 text-foreground px-2 py-0.5 rounded text-xs font-bold">
                           BESTSELLER
                         </span>
                       )}
                       {product.tags.includes('new_arrival') && (
-                        <span className="bg-blue-500 text-white px-2 py-0.5 rounded text-xs font-bold">
+                        <span className="bg-blue-500 text-foreground px-2 py-0.5 rounded text-xs font-bold">
                           NEW
                         </span>
                       )}
                     </div>
                   </div>
                   <div>
-                    <CardTitle className="text-white line-clamp-1">{product.name}</CardTitle>
+                    <CardTitle className="text-foreground line-clamp-1">{product.name}</CardTitle>
                     <p className="text-sm text-text-secondary mt-1 line-clamp-2">
                       {product.description}
                     </p>

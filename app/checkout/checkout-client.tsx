@@ -160,7 +160,7 @@ export function CheckoutClient() {
                   <form onSubmit={handleShippingSubmit} className="space-y-4">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-white mb-1">First Name *</label>
+                        <label className="block text-sm font-medium text-foreground mb-1">First Name *</label>
                         <input
                           type="text"
                           value={shippingAddress.firstName}
@@ -173,7 +173,7 @@ export function CheckoutClient() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-white mb-1">Last Name *</label>
+                        <label className="block text-sm font-medium text-foreground mb-1">Last Name *</label>
                         <input
                           type="text"
                           value={shippingAddress.lastName}
@@ -187,7 +187,7 @@ export function CheckoutClient() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-white mb-1">Address Line 1 *</label>
+                      <label className="block text-sm font-medium text-foreground mb-1">Address Line 1 *</label>
                       <input
                         type="text"
                         value={shippingAddress.addressLine1}
@@ -201,7 +201,7 @@ export function CheckoutClient() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-white mb-1">Address Line 2</label>
+                      <label className="block text-sm font-medium text-foreground mb-1">Address Line 2</label>
                       <input
                         type="text"
                         value={shippingAddress.addressLine2}
@@ -213,7 +213,7 @@ export function CheckoutClient() {
 
                     <div className="grid sm:grid-cols-3 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-white mb-1">City *</label>
+                        <label className="block text-sm font-medium text-foreground mb-1">City *</label>
                         <input
                           type="text"
                           value={shippingAddress.city}
@@ -226,7 +226,7 @@ export function CheckoutClient() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-white mb-1">State *</label>
+                        <label className="block text-sm font-medium text-foreground mb-1">State *</label>
                         <input
                           type="text"
                           value={shippingAddress.state}
@@ -240,7 +240,7 @@ export function CheckoutClient() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-white mb-1">Postal Code *</label>
+                        <label className="block text-sm font-medium text-foreground mb-1">Postal Code *</label>
                         <input
                           type="text"
                           value={shippingAddress.postalCode}
@@ -254,7 +254,7 @@ export function CheckoutClient() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-white mb-1">Phone *</label>
+                      <label className="block text-sm font-medium text-foreground mb-1">Phone *</label>
                       <input
                         type="tel"
                         value={shippingAddress.phone}
@@ -346,7 +346,7 @@ export function CheckoutClient() {
                         </div>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-white truncate">{item.product.name}</p>
+                        <p className="text-sm font-medium text-foreground truncate">{item.product.name}</p>
                         <p className="text-xs text-text-secondary">
                           {formatPrice(item.product.base_price)} × {item.quantity}
                         </p>
@@ -359,15 +359,15 @@ export function CheckoutClient() {
                 <div className="border-t border-gold/20 pt-4 space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-text-secondary">Subtotal</span>
-                    <span className="text-white">{formatPrice(cart.subtotal)}</span>
+                    <span className="text-foreground">{formatPrice(cart.subtotal)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-text-secondary">Tax</span>
-                    <span className="text-white">{formatPrice(cart.tax)}</span>
+                    <span className="text-foreground">{formatPrice(cart.tax)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-text-secondary">Shipping</span>
-                    <span className="text-white">
+                    <span className="text-foreground">
                       {cart.shipping === 0 ? 'FREE' : formatPrice(cart.shipping)}
                     </span>
                   </div>

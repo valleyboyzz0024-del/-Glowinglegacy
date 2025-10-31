@@ -79,7 +79,7 @@ export function CartDrawer() {
 
                   {/* Product Details */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-white truncate mb-1">
+                    <h3 className="font-medium text-foreground truncate mb-1">
                       {item.product.name}
                     </h3>
                     <p className="text-sm text-gold font-semibold mb-2">
@@ -124,19 +124,19 @@ export function CartDrawer() {
             {/* Subtotal */}
             <div className="flex justify-between text-sm mb-2">
               <span className="text-text-secondary">Subtotal</span>
-              <span className="text-white">{formatPrice(cart.subtotal)}</span>
+              <span className="text-foreground">{formatPrice(cart.subtotal)}</span>
             </div>
 
             {/* Tax */}
             <div className="flex justify-between text-sm mb-2">
               <span className="text-text-secondary">Tax (8%)</span>
-              <span className="text-white">{formatPrice(cart.tax)}</span>
+              <span className="text-foreground">{formatPrice(cart.tax)}</span>
             </div>
 
             {/* Shipping */}
             <div className="flex justify-between text-sm mb-4">
               <span className="text-text-secondary">Shipping</span>
-              <span className="text-white">
+              <span className="text-foreground">
                 {cart.shipping === 0 ? 'Calculated at checkout' : formatPrice(cart.shipping)}
               </span>
             </div>

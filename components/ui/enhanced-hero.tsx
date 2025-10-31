@@ -135,7 +135,7 @@ export function EnhancedHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-2xl md:text-3xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed font-light"
+            className="text-2xl md:text-3xl text-foreground/90 max-w-4xl mx-auto mb-12 leading-relaxed font-light"
           >
             Record heartfelt video messages and send meaningful gifts to loved ones,
             <span className="text-gold font-medium"> delivered exactly when they need them most</span>
@@ -203,7 +203,7 @@ export function EnhancedHero() {
                 className="flex items-center gap-3 bg-black/40 backdrop-blur-md px-6 py-4 rounded-full border border-gold/20 hover:border-gold/50 transition-all duration-300 group"
               >
                 <badge.icon className={`h-6 w-6 ${badge.color} group-hover:scale-110 transition-transform`} />
-                <span className="text-white/90 font-medium text-base md:text-lg">{badge.text}</span>
+                <span className="text-foreground/90 font-medium text-base md:text-lg">{badge.text}</span>
               </motion.div>
             ))}
           </motion.div>

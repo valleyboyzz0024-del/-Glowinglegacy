@@ -131,7 +131,7 @@ export function GlassCardTitle({
         'text-2xl font-heading font-bold mb-2',
         gradient
           ? 'bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent'
-          : 'text-white',
+          : 'text-foreground',
         className
       )}
     >
@@ -150,7 +150,7 @@ export function GlassCardDescription({
   className,
 }: GlassCardDescriptionProps) {
   return (
-    <p className={cn('text-white/70 leading-relaxed text-base', className)}>
+    <p className={cn('text-foreground/70 leading-relaxed text-base', className)}>
       {children}
     </p>
   );

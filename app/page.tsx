@@ -152,7 +152,7 @@ export default function HomePage() {
               <h2 className="text-4xl md:text-5xl font-heading text-gold mb-4">
                 Everything You Need
               </h2>
-              <p className="text-xl text-white/70 max-w-2xl mx-auto">
+              <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
                 Explore our comprehensive features designed to preserve your legacy
               </p>
             </ScaleOnScroll>
@@ -169,7 +169,7 @@ export default function HomePage() {
                       <h3 className="text-3xl font-heading text-gold mb-4">
                         Record Your Story
                       </h3>
-                      <p className="text-lg text-white/80 mb-6 leading-relaxed">
+                      <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
                         Create heartfelt video messages with our intuitive recorder.
                         No technical skills required - just press record and speak from the heart.
                       </p>
@@ -181,7 +181,7 @@ export default function HomePage() {
                           'Secure cloud storage',
                           'Download anytime',
                         ].map((feature, i) => (
-                          <li key={i} className="flex items-center gap-3 text-white/90">
+                          <li key={i} className="flex items-center gap-3 text-foreground/90">
                             <div className="h-2 w-2 rounded-full bg-gold" />
                             {feature}
                           </li>
@@ -205,7 +205,7 @@ export default function HomePage() {
                       <h3 className="text-3xl font-heading text-gold mb-4">
                         Thoughtful Gifts
                       </h3>
-                      <p className="text-lg text-white/80 mb-6 leading-relaxed">
+                      <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
                         Pair your messages with meaningful gifts from our curated collection.
                         Each gift is carefully selected to create lasting memories.
                       </p>
@@ -217,7 +217,7 @@ export default function HomePage() {
                           'Tracking notifications',
                           'Special occasion themes',
                         ].map((feature, i) => (
-                          <li key={i} className="flex items-center gap-3 text-white/90">
+                          <li key={i} className="flex items-center gap-3 text-foreground/90">
                             <div className="h-2 w-2 rounded-full bg-gold" />
                             {feature}
                           </li>
@@ -241,7 +241,7 @@ export default function HomePage() {
                       <h3 className="text-3xl font-heading text-gold mb-4">
                         Share With Family
                       </h3>
-                      <p className="text-lg text-white/80 mb-6 leading-relaxed">
+                      <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
                         Collaborate with family members to build a complete legacy together.
                         Share messages, plan deliveries, and preserve memories as a family.
                       </p>
@@ -253,7 +253,7 @@ export default function HomePage() {
                           'Privacy controls',
                           'Shared photo albums',
                         ].map((feature, i) => (
-                          <li key={i} className="flex items-center gap-3 text-white/90">
+                          <li key={i} className="flex items-center gap-3 text-foreground/90">
                             <div className="h-2 w-2 rounded-full bg-gold" />
                             {feature}
                           </li>
@@ -277,7 +277,7 @@ export default function HomePage() {
                       <h3 className="text-3xl font-heading text-gold mb-4">
                         Bank-Level Security
                       </h3>
-                      <p className="text-lg text-white/80 mb-6 leading-relaxed">
+                      <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
                         Your memories are precious. We protect them with enterprise-grade security
                         and encryption, ensuring they remain safe for generations.
                       </p>
@@ -289,7 +289,7 @@ export default function HomePage() {
                           'GDPR compliant',
                           'Backup redundancy',
                         ].map((feature, i) => (
-                          <li key={i} className="flex items-center gap-3 text-white/90">
+                          <li key={i} className="flex items-center gap-3 text-foreground/90">
                             <div className="h-2 w-2 rounded-full bg-gold" />
                             {feature}
                           </li>
@@ -401,7 +401,7 @@ export default function HomePage() {
                         <div className="h-6 w-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 ring-1 ring-gold/30">
                           <div className="h-2.5 w-2.5 rounded-full bg-gold shadow-sm shadow-gold/50" />
                         </div>
-                        <span className="text-white/90">{feature}</span>
+                        <span className="text-foreground/90">{feature}</span>
                       </li>
                     ))}
                   </ul>

@@ -51,7 +51,7 @@ function OrderConfirmationContent() {
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between py-3 border-b border-gold/20">
               <span className="text-text-secondary">Order Number</span>
-              <span className="text-white font-semibold">{orderNumber}</span>
+              <span className="text-foreground font-semibold">{orderNumber}</span>
             </div>
             <div className="flex items-center justify-between py-3 border-b border-gold/20">
               <span className="text-text-secondary">Status</span>
@@ -59,7 +59,7 @@ function OrderConfirmationContent() {
             </div>
             <div className="flex items-center justify-between py-3">
               <span className="text-text-secondary">Estimated Delivery</span>
-              <span className="text-white font-semibold">5-7 Business Days</span>
+              <span className="text-foreground font-semibold">5-7 Business Days</span>
             </div>
           </CardContent>
         </Card>
@@ -77,7 +77,7 @@ function OrderConfirmationContent() {
                 </div>
               </div>
               <div>
-                <h3 className="text-white font-semibold mb-1">
+                <h3 className="text-foreground font-semibold mb-1">
                   Confirmation Email Sent
                 </h3>
                 <p className="text-sm text-text-secondary">
@@ -93,7 +93,7 @@ function OrderConfirmationContent() {
                 </div>
               </div>
               <div>
-                <h3 className="text-white font-semibold mb-1">
+                <h3 className="text-foreground font-semibold mb-1">
                   Order Processing
                 </h3>
                 <p className="text-sm text-text-secondary">
@@ -109,7 +109,7 @@ function OrderConfirmationContent() {
                 </div>
               </div>
               <div>
-                <h3 className="text-white font-semibold mb-1">
+                <h3 className="text-foreground font-semibold mb-1">
                   Track Your Order
                 </h3>
                 <p className="text-sm text-text-secondary">
@@ -139,7 +139,7 @@ function OrderConfirmationContent() {
           <p className="text-sm text-text-secondary mb-2">
             Questions about your order?
           </p>
-          <p className="text-white">
+          <p className="text-foreground">
             Contact us at{' '}
             <a
               href="mailto:support@glowinglegacy.com"

@@ -113,7 +113,7 @@ export default function ShopPage() {
                     )}
                   </div>
                   <div>
-                    <CardTitle className="text-white group-hover:text-gold transition-colors">
+                    <CardTitle className="text-foreground group-hover:text-gold transition-colors">
                       {product.name}
                     </CardTitle>
                     <CardDescription className="line-clamp-2 mt-2">
@@ -204,7 +204,7 @@ export default function ShopPage() {
                       </div>
                     )}
                     {product.tags.includes('new_arrival') && (
-                      <div className="absolute top-2 left-2 bg-emerald-500 text-white px-2 py-1 rounded text-xs font-bold">
+                      <div className="absolute top-2 left-2 bg-emerald-500 text-foreground px-2 py-1 rounded text-xs font-bold">
                         NEW
                       </div>
                     )}
@@ -215,7 +215,7 @@ export default function ShopPage() {
                     )}
                   </div>
                   <div>
-                    <CardTitle className="text-white group-hover:text-gold transition-colors line-clamp-1">
+                    <CardTitle className="text-foreground group-hover:text-gold transition-colors line-clamp-1">
                       {product.name}
                     </CardTitle>
                     <CardDescription className="line-clamp-2 mt-2">

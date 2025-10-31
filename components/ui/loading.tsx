@@ -224,7 +224,7 @@ export function SpinnerOverlay({
         <GlowingLoader size="lg" className="mx-auto mb-6" />
         {message && (
           <motion.p
-            className="text-xl text-white/90 font-medium"
+            className="text-xl text-foreground/90 font-medium"
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
@@ -249,7 +249,7 @@ export function LinearProgress({
     <div className={cn('w-full', className)}>
       {showPercentage && (
         <div className="flex justify-between mb-2">
-          <span className="text-sm text-white/70">Loading...</span>
+          <span className="text-sm text-foreground/70">Loading...</span>
           <span className="text-sm text-gold font-medium">{Math.round(progress)}%</span>
         </div>
       )}
