@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Circle, Square } from 'lucide-react';
 
-const Webcam = dynamic(() => import('react-webcam'), { ssr: false });
+const Webcam = dynamic(() => import('react-webcam').then(m => m.default as any), { ssr: false }) as any;
 
 export default function RecordPage() {
   const webcamRef = useRef<any>(null);
