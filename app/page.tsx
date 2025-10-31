@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Video, Gift, Calendar, Heart, Shield, Star, ArrowRight } from 'lucide-react';
+import { Video, Gift, Calendar, Heart, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { LegacyReadinessCalculator } from '@/components/legacy-readiness-calculator';
+import { EnhancedHero } from '@/components/ui/enhanced-hero';
 
 export default function HomePage() {
   return (
@@ -46,51 +47,8 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 pt-20 pb-32 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-5xl md:text-7xl font-heading text-gold mb-6 leading-tight">
-            Leave More Than Memories
-          </h1>
-          <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-12 leading-relaxed">
-            Record heartfelt video messages and send meaningful gifts to loved ones, delivered exactly when they need them most.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Link href="/signup">
-              <Button size="lg" className="text-lg px-8">
-                Create Your First Message
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Link href="#how-it-works">
-              <Button size="lg" variant="outline" className="text-lg px-8">
-                See How It Works
-              </Button>
-            </Link>
-          </div>
-
-          {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-text-secondary">
-            <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-gold" />
-              <span>256-bit Encrypted</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Star className="h-5 w-5 text-gold" />
-              <span>Trusted by 10,000+ Families</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Heart className="h-5 w-5 text-gold" />
-              <span>Forever Guarantee</span>
-            </div>
-          </div>
-        </motion.div>
-      </section>
+      {/* Enhanced Hero Section with Particles & Leonardo AI */}
+      <EnhancedHero />
 
       {/* How It Works Section */}
       <section id="how-it-works" className="py-20 bg-background-card/50">
