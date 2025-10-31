@@ -98,19 +98,7 @@ export default function SignUpPage() {
       if (authError) throw authError;
 
       if (authData.user) {
-        // Create user profile in users table
-        const { error: profileError } = await supabase
-          .from('users')
-          .insert({
-            id: authData.user.id,
-            email: formData.email,
-            full_name: formData.fullName,
-            phone_number: formData.phone || null,
-            video_credits: 0,
-          });
-
-        if (profileError) throw profileError;
-
+        // User profile is automatically created by database trigger
         // Redirect to onboarding
         router.push('/onboarding');
       }
