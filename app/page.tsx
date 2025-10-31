@@ -2,11 +2,18 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Video, Gift, Calendar, Heart, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { LegacyReadinessCalculator } from '@/components/legacy-readiness-calculator';
 import { EnhancedHero } from '@/components/ui/enhanced-hero';
+import {
+  GlassCard,
+  GlassCardHeader,
+  GlassCardContent,
+  GlassCardTitle,
+  GlassCardDescription,
+  GlassCardFooter,
+} from '@/components/ui/glass-card';
 
 export default function HomePage() {
   return (
@@ -89,30 +96,24 @@ export default function HomePage() {
                 step: 4,
               },
             ].map((item, index) => (
-              <motion.div
+              <GlassCard
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                variant="feature"
+                delay={index * 0.1}
+                className="text-center h-full group"
               >
-                <Card className="text-center h-full relative overflow-hidden group">
-                  <div className="absolute top-4 right-4 text-6xl font-heading text-gold/10 group-hover:text-gold/20 transition-colors">
-                    {item.step}
-                  </div>
-                  <CardHeader>
-                    <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 transition-colors glow-gold">
-                      <item.icon className="h-8 w-8 text-gold" />
-                    </div>
-                    <CardTitle className="text-xl">{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-base">
-                      {item.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                <div className="absolute top-4 right-4 text-6xl font-heading text-gold/10 group-hover:text-gold/30 transition-colors duration-500">
+                  {item.step}
+                </div>
+                <GlassCardHeader icon={<item.icon className="h-8 w-8 text-gold" />}>
+                  <GlassCardTitle className="text-xl">{item.title}</GlassCardTitle>
+                </GlassCardHeader>
+                <GlassCardContent>
+                  <GlassCardDescription className="text-base leading-relaxed">
+                    {item.description}
+                  </GlassCardDescription>
+                </GlassCardContent>
+              </GlassCard>
             ))}
           </div>
         </div>
@@ -172,48 +173,51 @@ export default function HomePage() {
                 cta: 'Go Unlimited',
               },
             ].map((plan, index) => (
-              <motion.div
+              <GlassCard
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                variant="pricing"
+                delay={index * 0.1}
+                glow={plan.popular}
+                className="relative h-full"
               >
-                <Card className={`relative h-full ${plan.popular ? 'border-gold shadow-glow' : ''}`}>
-                  {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                      <div className="bg-gold text-background px-4 py-1 rounded-full text-sm font-semibold">
-                        MOST POPULAR
-                      </div>
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                    <div className="bg-gradient-to-r from-gold via-gold-light to-gold text-background px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                      MOST POPULAR
                     </div>
-                  )}
-                  <CardHeader className="text-center pb-8 pt-8">
-                    <CardTitle className="text-2xl mb-2">{plan.name}</CardTitle>
-                    <div className="text-4xl font-heading text-gold mb-2">{plan.price}</div>
-                    <CardDescription>{plan.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <ul className="space-y-3">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2">
-                          <div className="h-5 w-5 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
-                            <div className="h-2 w-2 rounded-full bg-gold" />
-                          </div>
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link href="/signup" className="block">
-                      <Button
-                        className="w-full"
-                        variant={plan.popular ? 'default' : 'outline'}
-                      >
-                        {plan.cta}
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                  </div>
+                )}
+                <GlassCardHeader className="text-center pb-6 pt-8">
+                  <GlassCardTitle className="text-2xl mb-2" gradient={plan.popular}>
+                    {plan.name}
+                  </GlassCardTitle>
+                  <div className="text-5xl font-heading text-gold mb-3 font-bold">{plan.price}</div>
+                  <GlassCardDescription className="text-base">{plan.description}</GlassCardDescription>
+                </GlassCardHeader>
+                <GlassCardContent className="space-y-6">
+                  <ul className="space-y-4">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-3 text-base">
+                        <div className="h-6 w-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 ring-1 ring-gold/30">
+                          <div className="h-2.5 w-2.5 rounded-full bg-gold shadow-sm shadow-gold/50" />
+                        </div>
+                        <span className="text-white/90">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </GlassCardContent>
+                <GlassCardFooter>
+                  <Link href="/signup" className="block">
+                    <Button
+                      className="w-full text-base py-6"
+                      variant={plan.popular ? 'default' : 'outline'}
+                    >
+                      {plan.cta}
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                </GlassCardFooter>
+              </GlassCard>
             ))}
           </div>
 
