@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're Invited to Glowing Legacy</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: #000000;
+      color: #ffffff;
+    }
+    .email-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    }
+    .header {
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #D4AF37;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #D4AF37;
+      margin: 0 0 20px 0;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 20px 0;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, #D4AF37 0%, #B8960F 100%);
+      color: #000000;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 20px 0;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+    }
+    .footer {
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .footer a {
+      color: #D4AF37;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="header">
+      <div class="logo">GLOWING LEGACY</div>
+    </div>
+    
+    <div class="content">
+      <h1>You've Been Invited</h1>
+      
+      <p>Someone special wants you to join them on Glowing Legacy - a place where love transcends time.</p>
+      
+      <p>Click below to accept your invitation and start creating meaningful memories:</p>
+      
+      <center>
+        <a href="{{ .ConfirmationURL }}" class="cta-button">Accept Invitation</a>
+      </center>
+      
+      <p>Together, you can preserve moments that matter and ensure your legacy lives on.</p>
+    </div>
+    
+    <div class="footer">
+      <p>© 2025 Glowing Legacy. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
