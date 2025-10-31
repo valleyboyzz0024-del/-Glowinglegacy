@@ -42,7 +42,7 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const { data, error: authError } = const supabase = getSupabase();
+      const supabase = getSupabase();
       const { data, error: authError } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
@@ -69,8 +69,8 @@ export default function LoginPage() {
   };
 
   const handleGoogleLogin = async () => {
-    const { error } = const supabase = getSupabase();
-      const { data, error: authError } = await supabase.auth.signInWithOAuth({
+    const supabase = getSupabase();
+    const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/dashboard`,
@@ -266,3 +266,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

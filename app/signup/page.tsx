@@ -123,6 +123,7 @@ export default function SignUpPage() {
   };
 
   const handleGoogleSignup = async () => {
+    const supabase = getSupabase();
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
