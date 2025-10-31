@@ -59,10 +59,18 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    // Parse JSONB images if needed
+    const parsedProducts = products?.map(p => ({
+      ...p,
+      images: Array.isArray(p.images) ? p.images :
+              typeof p.images === 'string' ? JSON.parse(p.images) :
+              []
+    })) || [];
+
     return NextResponse.json({
       success: true,
-      data: products || [],
-      count: products?.length || 0,
+      data: parsedProducts,
+      count: parsedProducts.length,
     });
   } catch (error) {
     console.error('Fetch products exception:', error);
