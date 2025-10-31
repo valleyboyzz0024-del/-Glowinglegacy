@@ -331,7 +331,7 @@ export default function HomePage() {
               </p>
             </RevealOnScroll>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto pt-8">
             {[
               {
                 name: 'Single Video',
