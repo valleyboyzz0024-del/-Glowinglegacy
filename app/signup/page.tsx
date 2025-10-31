@@ -5,7 +5,7 @@ export const revalidate = 0;
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
@@ -83,7 +83,7 @@ export default function SignUpPage() {
 
     try {
       // Sign up with Supabase Auth
-      const { data: authData, error: authError } = await supabase.auth.signUp({
+      const supabase = getSupabase();\n      const { data: authData, error: authError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
