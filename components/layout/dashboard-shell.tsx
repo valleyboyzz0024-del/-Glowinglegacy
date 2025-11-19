@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Search, Bell, User2 } from 'lucide-react';
+import { Search, Bell } from 'lucide-react';
+import { UserProfileMenu } from '@/components/dashboard/user-profile-menu';
 
 const nav = [
   { label: 'Dashboard', href: '/dashboard' },
@@ -55,10 +56,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
             <button className="h-9 w-9 rounded-full border border-gold/20 bg-background-card/60 hover:shadow-glow transition-shadow flex items-center justify-center">
               <Bell className="h-4 w-4" />
             </button>
-            <button className="flex items-center gap-2 rounded-full border border-gold/20 bg-background-card/60 px-2 py-1 hover:shadow-glow transition-shadow">
-              <User2 className="h-4 w-4" />
-              <span className="hidden sm:block text-sm">Account</span>
-            </button>
+            <UserProfileMenu />
           </div>
         </div>
       </header>
