@@ -13,7 +13,6 @@ export const dynamic = 'force-dynamic';
 const Webcam = dynamicImport(() => import('react-webcam').then(m => m.default as any), { ssr: false }) as any;
 
 export default function RecordPage() {
-  const supabase = getSupabase();
   const webcamRef = useRef<any>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const [recording, setRecording] = useState(false);
@@ -27,6 +26,7 @@ export default function RecordPage() {
 
   useEffect(() => {
     async function getUser() {
+      const supabase = getSupabase();
       const { data: { user } } = await supabase.auth.getUser();
       setUserId(user?.id || null);
     }
