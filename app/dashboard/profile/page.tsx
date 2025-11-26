@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { User2, Mail, Phone, Calendar, Upload, Check, X } from 'lucide-react';
+import { User2, Mail, Phone, Upload, Check, X } from 'lucide-react';
 import { DashboardShell } from '@/components/layout/dashboard-shell';
 import { getSupabase } from '@/lib/supabase';
 import { cn } from '@/lib/utils';
@@ -10,7 +10,6 @@ interface ProfileData {
   email: string;
   full_name?: string;
   phone?: string;
-  date_of_birth?: string;
   created_at?: string;
 }
 
@@ -23,7 +22,6 @@ export default function ProfilePage() {
   const [formData, setFormData] = useState({
     full_name: '',
     phone: '',
-    date_of_birth: '',
   });
 
   useEffect(() => {
@@ -40,17 +38,16 @@ export default function ProfilePage() {
         return;
       }
 
-      const { data: profileData } = await supabase
-        .from('profiles')
+      const { data: userData } = await supabase
+        .from('users')
         .select('*')
         .eq('id', user.id)
         .single();
 
       const profile = {
         email: user.email || '',
-        full_name: profileData?.full_name || '',
-        phone: profileData?.phone || '',
-        date_of_birth: profileData?.date_of_birth || '',
+        full_name: userData?.full_name || '',
+        phone: userData?.phone_number || '',
         created_at: user.created_at,
       };
 
@@ -58,7 +55,6 @@ export default function ProfilePage() {
       setFormData({
         full_name: profile.full_name || '',
         phone: profile.phone || '',
-        date_of_birth: profile.date_of_birth || '',
       });
     } catch (error) {
       console.error('Error loading profile:', error);
@@ -80,11 +76,10 @@ export default function ProfilePage() {
       }
 
       const { error } = await supabase
-        .from('profiles')
+        .from('users')
         .update({
           full_name: formData.full_name,
-          phone: formData.phone,
-          date_of_birth: formData.date_of_birth || null,
+          phone_number: formData.phone,
         })
         .eq('id', user.id);
 
@@ -107,7 +102,6 @@ export default function ProfilePage() {
     setFormData({
       full_name: profile?.full_name || '',
       phone: profile?.phone || '',
-      date_of_birth: profile?.date_of_birth || '',
     });
     setIsEditing(false);
     setErrorMessage('');
@@ -199,7 +193,7 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              <div>
+              <div className="md:col-span-2">
                 <label className="block text-sm font-medium mb-2 flex items-center gap-2">
                   <Phone className="h-4 w-4 text-gold" />
                   Phone Number
@@ -215,32 +209,6 @@ export default function ProfilePage() {
                 ) : (
                   <div className="px-4 py-2.5 rounded-lg border border-gold/20 bg-background/50">
                     {profile?.phone || <span className="text-text-secondary italic">Not set</span>}
-                  </div>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2 flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-gold" />
-                  Date of Birth
-                </label>
-                {isEditing ? (
-                  <input
-                    type="date"
-                    value={formData.date_of_birth}
-                    onChange={(e) => setFormData({ ...formData, date_of_birth: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gold/20 bg-background-card/60 focus:outline-none focus:ring-2 focus:ring-gold/50"
-                  />
-                ) : (
-                  <div className="px-4 py-2.5 rounded-lg border border-gold/20 bg-background/50">
-                    {profile?.date_of_birth ? 
-                      new Date(profile.date_of_birth).toLocaleDateString('en-US', { 
-                        month: 'long', 
-                        day: 'numeric', 
-                        year: 'numeric' 
-                      }) : 
-                      <span className="text-text-secondary italic">Not set</span>
-                    }
                   </div>
                 )}
               </div>
