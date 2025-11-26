@@ -16,7 +16,9 @@ export function VideoCredits({ available, used }: { available: number; used: num
           <div className="text-2xl font-heading text-gold">{available}</div>
           <div className="text-sm text-text-secondary">Available • Used {used}</div>
         </div>
-        <Button className="whitespace-nowrap">Purchase More Videos</Button>
+        <Button className="whitespace-nowrap" asChild>
+          <a href="/shop?category=digital">Purchase More Videos</a>
+        </Button>
       </CardContent>
     </Card>
   );
