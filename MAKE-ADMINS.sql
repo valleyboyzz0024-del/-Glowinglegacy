@@ -19,7 +19,7 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Step 3: Make these 3 users admins
 UPDATE users SET is_admin = true WHERE email = 'kerrco@live.ca';
-UPDATE users SET is_admin = true WHERE email = 'rhroofer98@gmaiil.com';
+UPDATE users SET is_admin = true WHERE email = 'rhroofer98@gmail.com';
 UPDATE users SET is_admin = true WHERE email = 'ryanthetechguy@gmail.com';
 
 -- Verify who is admin
