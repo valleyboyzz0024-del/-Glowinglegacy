@@ -4,14 +4,16 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Product, formatPrice } from '@/lib/types/product';
-import { Plus, Edit, Trash2, Package, X, Check } from 'lucide-react';
+import { Plus, Trash2, Package, X, Check, AlertCircle } from 'lucide-react';
 import Image from 'next/image';
+import { getSupabase } from '@/lib/supabase';
 
 export default function ProductsAdminPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     slug: '',
@@ -24,8 +26,38 @@ export default function ProductsAdminPage() {
   });
 
   useEffect(() => {
-    fetchProducts();
+    checkAdminAccess();
   }, []);
+
+  const checkAdminAccess = async () => {
+    try {
+      const supabase = getSupabase();
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (!user) {
+        window.location.href = '/login';
+        return;
+      }
+
+      const { data: userData } = await supabase
+        .from('users')
+        .select('is_admin')
+        .eq('id', user.id)
+        .single();
+
+      if (userData?.is_admin === true) {
+        setIsAdmin(true);
+        fetchProducts();
+      } else {
+        setIsAdmin(false);
+      }
+    } catch (error) {
+      console.error('Auth check failed:', error);
+      setIsAdmin(false);
+    } finally {
+      setCheckingAuth(false);
+    }
+  };
 
   const fetchProducts = async () => {
     try {
@@ -117,6 +149,39 @@ export default function ProductsAdminPage() {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '');
   };
+
+  // Show loading while checking auth
+  if (checkingAuth) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold"></div>
+      </div>
+    );
+  }
+
+  // Show access denied if not admin
+  if (!isAdmin) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <Card className="border-red-500/20 bg-red-500/10 max-w-md">
+          <CardHeader>
+            <CardTitle className="text-red-400 flex items-center gap-2">
+              <AlertCircle className="h-5 w-5" />
+              Access Denied
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-red-400 mb-4">
+              You do not have permission to access this page. Only administrators can manage products.
+            </p>
+            <Button asChild variant="outline">
+              <a href="/dashboard">Return to Dashboard</a>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
